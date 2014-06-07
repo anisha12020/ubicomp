@@ -1,6 +1,51 @@
 <!DOCTYPE html>
 <head>
   <link href="/normalize.css" rel="stylesheet">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+    <script>
+      $(document).ready(function() {
+        $.hideAll = function(){
+          $("#Acad").hide();
+          $("#Lib").hide();
+          $("#SAC").hide();
+          $("#GH").hide();
+          $("#BH").hide();
+          $("#FH").hide();
+        };
+        $.hideAll();
+      });
+      $(document).ready(function() {        
+        $('#Building').change(function () {
+          if ($('#Building option:selected').text() == "Academic Block"){
+              $.hideAll();
+              $('#Acad').show();       
+          }
+          else if ($('#Building option:selected').text() == "Library and Information Centre"){
+              $.hideAll();
+              $('#Lib').show();
+          }
+          else if ($('#Building option:selected').text() == "Students Activities Centre"){
+              $.hideAll();
+              $('#SAC').show();
+          }
+          else if ($('#Building option:selected').text() == "Girls Hostel"){
+              $.hideAll();
+              $('#GH').show();
+          }
+          else if ($('#Building option:selected').text() == "Boys Hostel"){
+              $.hideAll();
+              $('#BH').show();
+          }
+          else if ($('#Building option:selected').text() == "Faculty Housing"){
+              $.hideAll();
+              $('#FH').show();
+          }
+          else {
+              $.hideAll();
+          }
+        });
+      });
+  </script>
   <title>Ubicomp: Building-wise</title>
   <style>
     header {
@@ -37,9 +82,12 @@
     p {
       font-size: 22px;
     }
-    article {
+    div {
       max-width: 1000px;
       margin: 0 auto;
+    }
+    select {
+      float: left;
     }
   </style>
 </head>
@@ -47,17 +95,73 @@
 <body>
 
   <header>
-    <img src="C:\Users\hp\Documents\Ubicomp\iiitd-logo.jpg">
+    <img src="/iiitd-logo.jpg">
     <h1>Ubicomp</h1>
     <ul>
       <li><a href="#">Building-wise</a></li>
       <li><a href="#">People-wise</a></li>
-      <li><a href="#">Usage Patterns</a></li>
       <li><a href="#">Name Search</a></li>
     </ul>
   </header>
 
-  <article>
-    <h2>Building-wise Lookup</h2>
-  </article>
+    <h2>Building-wise Lookup</h2>  
+    <select id="Building">
+      <option value="Dummy">Select</option>
+      <option value="Acad">Academic Block</option>
+      <option value="Lib">Library and Information Centre</option>
+      <option value="SAC">Students Activities Centre</option>
+      <option value="GH">Girls Hostel</option>
+      <option value="BH">Boys Hostel</option>
+      <option value="FH">Faculty Housing</option>
+    </select>
+  
+    <select id="Acad">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+      <option value="F4">Fourth Floor</option>
+      <option value="F5">Fifth Floor</option>
+    </select>
+    <select id="Lib">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+    </select>
+    <select id="SAC">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+    </select>
+    <select id="GH">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+      <option value="F4">Fourth Floor</option>
+    </select>
+    <select id="BH">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+      <option value="F4">Fourth Floor</option>
+      <option value="F5">Fifth Floor</option>
+    </select>
+    <select id="FH">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+      <option value="F4">Fourth Floor</option>
+      <option value="F5">Fifth Floor</option>
+    </select>
 </body>
