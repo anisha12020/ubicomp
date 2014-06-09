@@ -2,49 +2,145 @@
 <head>
   <link href="/normalize.css" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
-    <script>
-      $(document).ready(function() {
-        $.hideAll = function(){
-          $("#Acad").hide();
-          $("#Lib").hide();
-          $("#SAC").hide();
-          $("#GH").hide();
-          $("#BH").hide();
-          $("#FH").hide();
-        };
-        $.hideAll();
-      });
-      $(document).ready(function() {        
-        $('#Building').change(function () {
-          if ($('#Building option:selected').text() == "Academic Block"){
-              $.hideAll();
-              $('#Acad').show();       
+  <script>
+    $(document).ready(function() {
+
+      $.Acadwingselect1 = function(){
+        $("#AcadandHostelWings").change(function(){
+          var selectedvalue = $('#AcadandHostelWings option:selected').text();
+          if ((selectedvalue == "Wing A")||(selectedvalue == "Wing B")){
+            $("#Classrooms").hide();
+            $("#AcadLabs").show();
           }
-          else if ($('#Building option:selected').text() == "Library and Information Centre"){
-              $.hideAll();
-              $('#Lib').show();
-          }
-          else if ($('#Building option:selected').text() == "Students Activities Centre"){
-              $.hideAll();
-              $('#SAC').show();
-          }
-          else if ($('#Building option:selected').text() == "Girls Hostel"){
-              $.hideAll();
-              $('#GH').show();
-          }
-          else if ($('#Building option:selected').text() == "Boys Hostel"){
-              $.hideAll();
-              $('#BH').show();
-          }
-          else if ($('#Building option:selected').text() == "Faculty Housing"){
-              $.hideAll();
-              $('#FH').show();
-          }
+          else if (selectedvalue == "Wing C"){
+            $("#AcadLabs").hide();
+            $("#Classrooms").show();
+          }          
           else {
-              $.hideAll();
+            $(".wing").hide();
           }
         });
-      });
+      };
+
+      $.Acadwingselect2 = function(){
+        $("#AcadWings").change(function(){
+          var selectedvalue = $('#AcadWings option:selected').text();
+          if ((selectedvalue == "Wing A")||(selectedvalue == "Wing B")){
+            $("#AcadLabs").show();
+          }        
+          else {
+            $("#AcadLabs").hide();
+          }
+        });
+      };
+
+      $.Acadselect = function(){
+        $("#Acad").change(function(){
+          var selectedvalue = $('#Acad option:selected').text();
+          if (selectedvalue == "Ground Floor"){
+              $(".wing").hide();
+              $("#Classrooms").show();              
+          }
+          else if ((selectedvalue == "First Floor")||(selectedvalue == "Second Floor")){
+              $(".wing").hide();
+              $("#AcadandHostelWings").show();
+              $.Acadwingselect1();
+            }
+          else if ((selectedvalue == "Third Floor")||(selectedvalue == "Fourth Floor")||(selectedvalue == "Fifth Floor")){
+              $(".wing").hide();
+              $("#AcadWings").show();
+              $.Acadwingselect2();
+            }
+          else {
+            $(".wing").hide();
+          }          
+        });
+      };
+
+      $.Libselect = function(){
+        $("#Lib").change(function(){
+          var selectedvalue = $('#Lib option:selected').text();
+          if ((selectedvalue == "Third Floor")||(selectedvalue == "Second Floor")){
+              $(".wing").hide();
+              $("#LibLabs").show();
+            }
+          else {
+            $(".wing").hide();
+          }          
+        });
+      };
+
+      $.Hostelselect = function(){
+        $("#GH").change(function(){
+          var selectedvalue = $('#GH option:selected').text();
+          if (selectedvalue == ""){
+              $(".wing").hide();
+              }
+          else {
+            $(".wing").hide();
+            $("#AcadandHostelWings").show();
+          }          
+        });
+      };
+
+      $.Hostelselect = function(){
+        $("#BH").change(function(){
+          var selectedvalue = $('#BH option:selected').text();
+          if (selectedvalue == ""){
+              $(".wing").hide();
+              }
+          else {
+            $(".wing").hide();
+            $("#AcadandHostelWings").show();
+          }          
+        });
+      };
+
+      $.hideAll = function(){
+        $("select").hide();          
+        $("#Building").show();
+      };
+      
+      $.Buildingselect = function(){     
+      $('#Building').change(function () {
+        if ($('#Building option:selected').text() == "Academic Block"){
+            $.hideAll();
+            $('#Acad').show();
+            $.Acadselect();                               
+        }
+        else if ($('#Building option:selected').text() == "Library and Information Centre"){
+            $.hideAll();
+            $('#Lib').show();
+            $.Libselect();
+        }
+        else if ($('#Building option:selected').text() == "Students Activity Centre"){
+            $.hideAll();
+            $('#SAC').show();
+        }
+        else if ($('#Building option:selected').text() == "Girls Hostel"){
+            $.hideAll();
+            $('#GH').show();
+            $.Hostelselect();
+        }
+        else if ($('#Building option:selected').text() == "Boys Hostel"){
+            $.hideAll();
+            $('#BH').show();
+            $.Hostelselect();
+        }
+        else if ($('#Building option:selected').text() == "Faculty Housing"){
+            $.hideAll();
+            $('#FH').show();
+        }
+        else {
+            $.hideAll();
+        }
+        });
+      };
+
+      $.hideAll();
+      $.Buildingselect();
+
+    });
   </script>
   <title>Ubicomp: Building-wise</title>
   <style>
@@ -87,7 +183,15 @@
       margin: 0 auto;
     }
     select {
-      float: left;
+      float: center;
+    }
+    input[type="submit"] {
+      padding: 10px;
+      font-size: 18px;
+      background: #3fada8;
+      color: white;
+      border: 0;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -95,10 +199,10 @@
 <body>
 
   <header>
-    <img src="/iiitd-logo.jpg">
+    <img src="./iiitd-logo.jpg">
     <h1>Ubicomp</h1>
     <ul>
-      <li><a href="#">Building-wise</a></li>
+      <li><a href="#">Home</a></li>
       <li><a href="#">People-wise</a></li>
       <li><a href="#">Name Search</a></li>
     </ul>
@@ -109,13 +213,13 @@
       <option value="Dummy">Select</option>
       <option value="Acad">Academic Block</option>
       <option value="Lib">Library and Information Centre</option>
-      <option value="SAC">Students Activities Centre</option>
+      <option value="SAC">Students Activity Centre</option>
       <option value="GH">Girls Hostel</option>
       <option value="BH">Boys Hostel</option>
       <option value="FH">Faculty Housing</option>
     </select>
   
-    <select id="Acad">
+    <select class="floor" id="Acad">
       <option value="">Select</option>
       <option value="F0">Ground Floor</option>
       <option value="F1">First Floor</option>
@@ -124,38 +228,29 @@
       <option value="F4">Fourth Floor</option>
       <option value="F5">Fifth Floor</option>
     </select>
-    <select id="Lib">
+    <select class="floor" id="Lib">
       <option value="">Select</option>
       <option value="F0">Ground Floor</option>
       <option value="F1">First Floor</option>
       <option value="F2">Second Floor</option>
       <option value="F3">Third Floor</option>
     </select>
-    <select id="SAC">
+    <select class="floor" id="SAC">
       <option value="">Select</option>
       <option value="F0">Ground Floor</option>
       <option value="F1">First Floor</option>
       <option value="F2">Second Floor</option>
       <option value="F3">Third Floor</option>
     </select>
-    <select id="GH">
-      <option value="">Select</option>
-      <option value="F0">Ground Floor</option>
-      <option value="F1">First Floor</option>
-      <option value="F2">Second Floor</option>
-      <option value="F3">Third Floor</option>
-      <option value="F4">Fourth Floor</option>
-    </select>
-    <select id="BH">
+    <select class="floor" id="GH">
       <option value="">Select</option>
       <option value="F0">Ground Floor</option>
       <option value="F1">First Floor</option>
       <option value="F2">Second Floor</option>
       <option value="F3">Third Floor</option>
       <option value="F4">Fourth Floor</option>
-      <option value="F5">Fifth Floor</option>
     </select>
-    <select id="FH">
+    <select class="floor" id="BH">
       <option value="">Select</option>
       <option value="F0">Ground Floor</option>
       <option value="F1">First Floor</option>
@@ -164,4 +259,50 @@
       <option value="F4">Fourth Floor</option>
       <option value="F5">Fifth Floor</option>
     </select>
+    <select class="floor" id="FH">
+      <option value="">Select</option>
+      <option value="F0">Ground Floor</option>
+      <option value="F1">First Floor</option>
+      <option value="F2">Second Floor</option>
+      <option value="F3">Third Floor</option>
+      <option value="F4">Fourth Floor</option>
+      <option value="F5">Fifth Floor</option>
+    </select>
+  
+  
+    <select class="wing" id="AcadWings">
+      <option value="">Select</option>
+      <option value="WA">Wing A</option>
+      <option value="WB">Wing B</option>
+    </select>
+
+    <select class="wing" id="AcadandHostelWings">
+      <option value="">Select</option>
+      <option value="WA">Wing A</option>
+      <option value="WB">Wing B</option>
+      <option value="WC">Wing C</option>
+    </select>
+
+    <select class="wing" id="AcadLabs">
+      <option value="">Select</option>
+      <option value="L1">Lab1</option>
+      <option value="L2">Lab2</option>
+    </select>
+
+    <select class="wing" id="Classrooms">
+      <option value="">Select</option> 
+      <option value="C1">CR1</option>
+      <option value="C2">CR2</option>
+      <option value="C3">CR3</option>
+    </select>
+
+    <select class="wing" id="LibLabs"> 
+      <option value="">Select</option>
+      <option value="L1">Lab1</option>
+      <option value="L2">Lab2</option>
+      <option value="L3">Lab3</option>
+    </select>
+
+   <br />
+   <input type="submit">
 </body>
