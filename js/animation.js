@@ -1,13 +1,3 @@
-/**
- *	Animated Graph Tutorial for Smashing Magazine
- *	July 2011
- *   
- * 	Author:	Derek Mack
- *			derekmack.com
- *			@derek_mack
- *
- *	Example 4 - Animated Bar Chart via CSS Transitions (WebKit Only)
- */
 
 // Wait for the DOM to load everything, just to be safe
 $(document).ready(function() {
