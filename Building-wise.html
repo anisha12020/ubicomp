@@ -1,215 +1,20 @@
 <!DOCTYPE html>
 <head>
   <link href="/normalize.css" rel="stylesheet">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
-  <script>
-    $(document).ready(function() {
-
-      $.Acadwingselect1 = function(){
-        $("#AcadandHostelWings").change(function(){
-          var selectedvalue = $('#AcadandHostelWings option:selected').text();
-          if ((selectedvalue == "Wing A")||(selectedvalue == "Wing B")){
-            $("#Classrooms").hide();
-            $("#AcadLabs").show();
-          }
-          else if (selectedvalue == "Wing C"){
-            $("#AcadLabs").hide();
-            $("#Classrooms").show();
-          }          
-          else {
-            $(".wing").hide();
-          }
-        });
-      };
-
-      $.Acadwingselect2 = function(){
-        $("#AcadWings").change(function(){
-          var selectedvalue = $('#AcadWings option:selected').text();
-          if ((selectedvalue == "Wing A")||(selectedvalue == "Wing B")){
-            $("#AcadLabs").show();
-          }        
-          else {
-            $("#AcadLabs").hide();
-          }
-        });
-      };
-
-      $.Acadselect = function(){
-        $("#Acad").change(function(){
-          var selectedvalue = $('#Acad option:selected').text();
-          if (selectedvalue == "Ground Floor"){
-              $(".wing").hide();
-              $("#Classrooms").show();              
-          }
-          else if ((selectedvalue == "First Floor")||(selectedvalue == "Second Floor")){
-              $(".wing").hide();
-              $("#AcadandHostelWings").show();
-              $.Acadwingselect1();
-            }
-          else if ((selectedvalue == "Third Floor")||(selectedvalue == "Fourth Floor")||(selectedvalue == "Fifth Floor")){
-              $(".wing").hide();
-              $("#AcadWings").show();
-              $.Acadwingselect2();
-            }
-          else {
-            $(".wing").hide();
-          }          
-        });
-      };
-
-      $.Libselect = function(){
-        $("#Lib").change(function(){
-          var selectedvalue = $('#Lib option:selected').text();
-          if ((selectedvalue == "Third Floor")||(selectedvalue == "Second Floor")){
-              $(".wing").hide();
-              $("#LibLabs").show();
-            }
-          else {
-            $(".wing").hide();
-          }          
-        });
-      };
-
-      $.Hostelselect = function(){
-        $("#GH").change(function(){
-          var selectedvalue = $('#GH option:selected').text();
-          if (selectedvalue == ""){
-              $(".wing").hide();
-              }
-          else {
-            $(".wing").hide();
-            $("#AcadandHostelWings").show();
-          }          
-        });
-      };
-
-      $.Hostelselect = function(){
-        $("#BH").change(function(){
-          var selectedvalue = $('#BH option:selected').text();
-          if (selectedvalue == ""){
-              $(".wing").hide();
-              }
-          else {
-            $(".wing").hide();
-            $("#AcadandHostelWings").show();
-          }          
-        });
-      };
-
-      $.hideAll = function(){
-        $("select").hide();          
-        $("#Building").show();
-      };
-      
-      $.Buildingselect = function(){     
-      $('#Building').change(function () {
-        if ($('#Building option:selected').text() == "Academic Block"){
-            $.hideAll();
-            $('#Acad').show();
-            $.Acadselect();                               
-        }
-        else if ($('#Building option:selected').text() == "Library and Information Centre"){
-            $.hideAll();
-            $('#Lib').show();
-            $.Libselect();
-        }
-        else if ($('#Building option:selected').text() == "Students Activity Centre"){
-            $.hideAll();
-            $('#SAC').show();
-        }
-        else if ($('#Building option:selected').text() == "Girls Hostel"){
-            $.hideAll();
-            $('#GH').show();
-            $.Hostelselect();
-        }
-        else if ($('#Building option:selected').text() == "Boys Hostel"){
-            $.hideAll();
-            $('#BH').show();
-            $.Hostelselect();
-        }
-        else if ($('#Building option:selected').text() == "Faculty Housing"){
-            $.hideAll();
-            $('#FH').show();
-        }
-        else {
-            $.hideAll();
-        }
-        });
-      };
-
-      $.hideAll();
-      $.Buildingselect();
-
-    });
-  </script>
+  <link rel="stylesheet" type="text/css" href="./css/website.css">
   <title>Ubicomp: Building-wise</title>
-  <style>
-    header {
-      text-align: center;
-      background: #3fada8;
-      color: white;
-    }
-    a {
-      color: white;
-    }
-    h1 {
-      font-size: 70px;
-      margin: 0;
-    }
-    img {
-      border: 10px solid white;
-      float: right;
-      margin: 5px;
-    }
-    ul {
-      padding: 10px;
-      background: black;
-    }
-    li {
-      display: inline;
-      padding: 0px 10px 0px 10px;
-    }
-    body {
-      text-align: center;
-      background: white;
-      color: black;
-      font-family: helvetica;      
-    }
-    p {
-      font-size: 22px;
-    }
-    div {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    select {
-      float: center;
-    }
-    input[type="submit"] {
-      padding: 10px;
-      font-size: 18px;
-      background: #3fada8;
-      color: white;
-      border: 0;
-      border-radius: 10px;
-    }
-  </style>
 </head>
 
 <body>
 
   <header>
 
-    <img src="C:\Users\HOME\Documents\Ubicomp\iiitd-logo.jpg">
-
-    <img src="/iiitd-logo.jpg">
-
     <img src="./iiitd-logo.jpg">
 
     <h1>Ubicomp</h1>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">People-wise</a></li>
+      <li><a href="./SampleWebsite.html">Home</a></li>
+      <li><a href="./People-wise.html">People-wise</a></li>
       <li><a href="#">Name Search</a></li>
     </ul>
   </header>
@@ -311,4 +116,8 @@
 
    <br />
    <input type="submit">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+  <script type="text/javascript" src="./js/building-wise.js"></script>
+
 </body>

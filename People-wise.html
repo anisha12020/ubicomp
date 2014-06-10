@@ -1,99 +1,8 @@
 <!DOCTYPE html>
 <head>
 <link href="/normalize.css" rel="stylesheet">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
-<script type="text/javascript">
-
-  	$(document).ready(function() {
-
-  		$("select").hide();
-  		$("#People").show();
-
-  		$.Studentselect = function() {
-  			 $("#Students").change(function() {
-  			 	var selvalue = $("#Students option:selected").text();
-  			 	if (selvalue == "B.Tech"){
-  			 		$(".year").hide();
-  			 		$("#BTech").show();
-  			 	}
-  			 	else if (selvalue == "M.Tech"){
-  			 		$(".year").hide();
-  			 		$("#MTech").show();
-  			 	}
-  			 	else if (selvalue == "PhD"){
-  			 		$(".year").hide();
-  			 		//$("#PhD").show();
-  			 	}
-  			 	else{
-  			 		$(".year").hide();
-  			 	}
-  			 });
-  		};
-
-  		$("#People").change(function() {
-	  		var selvalue = $("#People option:selected").text();
-	  		if (selvalue == "Students"){
-	  			$("#Students").show();
-	  			$.Studentselect();
-	  		}
-	  		else {
-	  			$("#Students").hide();
-	  		}
-  		});
-  	});
-</script> 
+<link rel="stylesheet" type="text/css" href="./css/website.css">
 <title>Ubicomp: People-wise</title>
-<style>
-    header {
-      text-align: center;
-      background: #3fada8;
-      color: white;
-    }
-    a {
-      color: white;
-    }
-    h1 {
-      font-size: 70px;
-      margin: 0;
-    }
-    img {
-      border: 10px solid white;
-      float: right;
-      margin: 5px;
-    }
-    ul {
-      padding: 10px;
-      background: black;
-    }
-    li {
-      display: inline;
-      padding: 0px 10px 0px 10px;
-    }
-    body {
-      text-align: center;
-      background: white;
-      color: black;
-      font-family: helvetica;      
-    }
-    p {
-      font-size: 22px;
-    }
-    div {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    select {
-      float: center;
-    }
-    input[type="submit"] {
-      padding: 10px;
-      font-size: 18px;
-      background: #3fada8;
-      color: white;
-      border: 0;
-      border-radius: 10px;
-    }
-</style>
 </head>
 
 <body>
@@ -102,8 +11,8 @@
     <img src="./iiitd-logo.jpg">
     <h1>Ubicomp</h1>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Building-wise</a></li>
+      <li><a href="./SampleWebsite.html">Home</a></li>
+      <li><a href="./Building-wise.html">Building-wise</a></li>
       <li><a href="#">Name Search</a></li>
     </ul>
   </header>
@@ -138,4 +47,6 @@
 
   <br />
   <input type="submit">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="./js/people-wise.js"></script> 
 </body>
